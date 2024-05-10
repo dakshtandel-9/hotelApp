@@ -43,10 +43,18 @@ app.get("/listing/:id",async (req,res)=>{
 })
 
 //new route
-app.post("/listing",(req,res)=>{
+app.post("/listing",async (req,res)=>{
     // let {title,description,image,price,location,country} = req.body
-    let listing = req.body.listing
-    console.log(listing.title)
+    let newListing = new Listing(req.body.listing)
+    await newListing.save()
+    res.redirect("/listing")
+})
+
+//edit route
+app.get("/listing/:id/edit",async (req,res)=>{
+    let { id } = req.params
+    let listing = await Listing.findById(id)
+    res.render("listings/edit.ejs",{ listing })
 })
 
 // app.get("/testing",async (req,res)=>{
