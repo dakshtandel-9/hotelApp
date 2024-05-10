@@ -4,10 +4,12 @@ const app = express()
 const mongoose = require("mongoose")
 const path = require("path")
 const Listing = require("./models/listing.js")
+const methodOverride = require('method-override')
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
 app.use(express.urlencoded({extended:true}))
+app.use(methodOverride('_method'))
 
 main()
     .then(() => {
@@ -55,6 +57,14 @@ app.get("/listing/:id/edit",async (req,res)=>{
     let { id } = req.params
     let listing = await Listing.findById(id)
     res.render("listings/edit.ejs",{ listing })
+})
+
+app.put("/listing/:id",async (req,res)=>{
+    let { id } = req.params
+    let editlisting = await Listing.findByIdAndUpdate(id,{...req.body.listing})
+    editlisting.save()
+    res.redirect(`/listing/${id}`)
+    
 })
 
 // app.get("/testing",async (req,res)=>{
