@@ -15,7 +15,7 @@ let listingSchema = new Schema({
             type:String
         }
     },
-    discription:{
+    description:{
         type:String
     },
     price:{

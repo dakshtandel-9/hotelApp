@@ -13,6 +13,6 @@
 
 <ul>
     <% for(let Listing of allListings){ %>
-        <li><a href=""><%= Listing.title %></a></li>
+        <li><a href="/listing/<%= Listing._id %>"><%= Listing.title %></a></li>
     <% } %>
 </ul>

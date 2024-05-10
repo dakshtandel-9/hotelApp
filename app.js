@@ -23,9 +23,17 @@ app.get("/", (req, res) => {
     res.send("working")
 })
 
+//index route
 app.get("/listing",async (req,res)=>{
      let allListings = await Listing.find({})
      res.render("index.ejs",{ allListings })
+})
+
+//show route
+app.get("/listing/:id",async (req,res)=>{
+    let { id } = req.params
+    let listing = await Listing.findById(id)
+    res.render("show.ejs", { listing })
 })
 
 // app.get("/testing",async (req,res)=>{
