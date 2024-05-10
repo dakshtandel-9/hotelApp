@@ -7,6 +7,7 @@ const Listing = require("./models/listing.js")
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
+app.use(express.urlencoded({extended:true}))
 
 main()
     .then(() => {
@@ -26,14 +27,26 @@ app.get("/", (req, res) => {
 //index route
 app.get("/listing",async (req,res)=>{
      let allListings = await Listing.find({})
-     res.render("index.ejs",{ allListings })
+     res.render("listings/index.ejs",{ allListings })
+})
+
+//new route
+app.get("/listing/new",(req,res)=>{
+    res.render("listings/new.ejs")
 })
 
 //show route
 app.get("/listing/:id",async (req,res)=>{
     let { id } = req.params
     let listing = await Listing.findById(id)
-    res.render("show.ejs", { listing })
+    res.render("listings/show.ejs", { listing })
+})
+
+//new route
+app.post("/listing",(req,res)=>{
+    // let {title,description,image,price,location,country} = req.body
+    let listing = req.body.listing
+    console.log(listing.title)
 })
 
 // app.get("/testing",async (req,res)=>{
