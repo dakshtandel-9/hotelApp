@@ -67,6 +67,13 @@ app.put("/listing/:id",async (req,res)=>{
     
 })
 
+app.delete("/listing/:id",async (req,res)=>{
+    let {id} = req.params
+    let deletedListing =await Listing.findByIdAndDelete(id)
+    console.log(deletedListing)
+    res.redirect("/listing")
+})
+
 // app.get("/testing",async (req,res)=>{
 //     let sampleListing = new Listing({
 //         title:"dakshtandel"
