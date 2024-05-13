@@ -1,8 +1,17 @@
-.navbar{
+nav.navbar.navbar-expand-sm.bg-body-tertiary.sticky-top.border-bottom {
+    background-color: white !important;
     height: 5rem;
-    background: white;
+}
+.logo-text{
+    margin-left: 0.8rem;
+    color: #ff385c;
 }
 
 .fa-solid{
     font-size: 2rem;
+    color: #ff385c;
+}
+
+.navbar-nav{
+    background: white;
 }
