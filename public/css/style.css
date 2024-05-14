@@ -15,3 +15,41 @@ nav.navbar.navbar-expand-sm.bg-body-tertiary.sticky-top.border-bottom {
 .navbar-nav{
     background: white;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.no_underline{
+    text-decoration: none !important;
+}
+
+.card{
+    border: none !important;
+}
+
+.card-body{
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 2rem !important;
+}
+
+.card-img-overlay:hover{
+    background: rgba(174, 174, 174, 0.203);
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem !important;
+}
+
+.container {
+    flex: 1;
+}
+
